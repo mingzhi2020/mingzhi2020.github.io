@@ -125,16 +125,16 @@
 
 
 
-<meta name="description" content="题目链接 乘积小于 K 的子数组 题目内容：  image-20220505154008755  思路： 滑动窗口，题目出现了连续子数组，提醒了使用滑动窗口。 所以维护一个滑动窗口，并维护一个总乘积，快指针不断向左不断移动，当区间总乘积大于K值时，慢指针才开始移动起来，当一个新的元素加入了滑动窗口的时候，会刚好会产生区间长度这么长的一个连续子数组。 代码： 1234567891">
+<meta name="description" content="题目链接 乘积小于 K 的子数组 题目内容：  思路： 滑动窗口，题目出现了连续子数组，提醒了使用滑动窗口。 所以维护一个滑动窗口，并维护一个总乘积，快指针不断向左不断移动，当区间总乘积大于K值时，慢指针才开始移动起来，当一个新的元素加入了滑动窗口的时候，会刚好会产生区间长度这么长的一个连续子数组。 代码： 1234567891011121314151617class Soluti">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode.713  乘积小于K的子数组">
 <meta property="og:url" content="http://example.com/2022/05/05/leetcode713%E4%B9%98%E7%A7%AF%E5%B0%8F%E4%BA%8EK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="诗宇的博客">
-<meta property="og:description" content="题目链接 乘积小于 K 的子数组 题目内容：  image-20220505154008755  思路： 滑动窗口，题目出现了连续子数组，提醒了使用滑动窗口。 所以维护一个滑动窗口，并维护一个总乘积，快指针不断向左不断移动，当区间总乘积大于K值时，慢指针才开始移动起来，当一个新的元素加入了滑动窗口的时候，会刚好会产生区间长度这么长的一个连续子数组。 代码： 1234567891">
+<meta property="og:description" content="题目链接 乘积小于 K 的子数组 题目内容：  思路： 滑动窗口，题目出现了连续子数组，提醒了使用滑动窗口。 所以维护一个滑动窗口，并维护一个总乘积，快指针不断向左不断移动，当区间总乘积大于K值时，慢指针才开始移动起来，当一个新的元素加入了滑动窗口的时候，会刚好会产生区间长度这么长的一个连续子数组。 代码： 1234567891011121314151617class Soluti">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/2022/05/05/leetcode713%E4%B9%98%E7%A7%AF%E5%B0%8F%E4%BA%8EK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/image-20220505154008755.png">
 <meta property="article:published_time" content="2022-05-05T07:36:04.000Z">
-<meta property="article:modified_time" content="2022-05-05T07:44:49.661Z">
+<meta property="article:modified_time" content="2022-05-05T07:47:33.406Z">
 <meta property="article:author" content="黄诗宇">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="滑动窗口">
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  207
+                  205
                 </span>
               
 
@@ -445,9 +445,7 @@
         <h3 id="题目链接">题目链接</h3>
 <h4 id="乘积小于-k-的子数组"><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subarray-product-less-than-k/">乘积小于 K 的子数组</a></h4>
 <h3 id="题目内容">题目内容：</h3>
-<figure>
-<img src="/2022/05/05/leetcode713%E4%B9%98%E7%A7%AF%E5%B0%8F%E4%BA%8EK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/image-20220505154008755.png" alt="image-20220505154008755"><figcaption aria-hidden="true">image-20220505154008755</figcaption>
-</figure>
+<p><img src="/2022/05/05/leetcode713%E4%B9%98%E7%A7%AF%E5%B0%8F%E4%BA%8EK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/image-20220505154008755.png"></p>
 <h3 id="思路">思路：</h3>
 <p>滑动窗口，题目出现了连续子数组，提醒了使用滑动窗口。</p>
 <p>所以维护一个<strong>滑动窗口</strong>，并维护一个<strong>总乘积</strong>，<strong>快指针不断向左</strong>不断移动，当区间总乘积大于K值时，慢指针才开始移动起来，当一个新的元素加入了滑动窗口的时候，会刚好会产生区间长度这么长的一个连续子数组。</p>
