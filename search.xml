@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/05/01/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode1305. 两棵二叉搜索树中的所有元素</title>
+    <url>/2022/05/01/%E4%B8%A4%E9%A2%97%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<h3 id="题目链接">题目链接:</h3>
+<p><strong><a href="https://leetcode-cn.com/problems/all-elements-in-two-binary-search-trees/">两棵二叉搜索树中的所有元素</a></strong></p>
+<h3 id="题目描述">题目描述:</h3>
+<p><strong>给你 root1 和 root2 这两棵二叉搜索树。请你返回一个列表，其中包含 两棵树 中的所有整数并按 升序 排序。</strong></p>
+<p><img src="/2022/05/01/%E4%B8%A4%E9%A2%97%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0/q2-e1.png"></p>
+<h3 id="思路">思路:</h3>
+<p><strong>二叉搜索树的中序遍历是有序的，所以对两个二叉搜索树分别进行中序遍历，再将两个中序遍历后的序列进行归并操作即可</strong></p>
+<h3 id="代码">代码：</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> p=<span class="number">0</span>,q=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">getAllElements</span><span class="params">(TreeNode root1, TreeNode root2)</span> &#123;</span><br><span class="line">        <span class="type">int</span> [] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5010</span>],b=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5010</span>];</span><br><span class="line">        dfs(root1,a,<span class="number">1</span>);</span><br><span class="line">        dfs(root2,b,<span class="number">2</span>);</span><br><span class="line">        ArrayList&lt;Integer&gt; list =<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(<span class="number">10010</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span><span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i&lt;p&amp;&amp;j&lt;q)&#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i]&lt;=b[j])</span><br><span class="line">                list.add(a[i++]);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                list.add(b[j++]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (i&lt;p)</span><br><span class="line">            list.add(a[i++]);</span><br><span class="line">        <span class="keyword">while</span> (j&lt;q)</span><br><span class="line">            list.add(b[j++]);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(TreeNode root,<span class="type">int</span> []g,<span class="type">int</span> op)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//中序遍历</span></span><br><span class="line">        dfs(root.left,g,op);</span><br><span class="line">        <span class="keyword">if</span> (op==<span class="number">1</span>)</span><br><span class="line">            g[p++]  = root.val;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            g[q++] = root.val;</span><br><span class="line">        dfs(root.right,g,op);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度">时间复杂度</h3>
+<p>$ O(n) $</p>
+]]></content>
+      <categories>
+        <category>算法系列</category>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>二叉搜索树</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode.937 重新排列日志文件</title>
+    <url>/2022/05/03/leetcode-937-%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h3 id="题目链接">题目链接:</h3>
+<p><strong><a href="https://leetcode-cn.com/problems/reorder-data-in-log-files/">重新排列日志文件</a></strong></p>
+<h3 id="题目描述">题目描述:</h3>
+<p><strong>给定一系列字符串，按照要求对字符串进行排序。</strong></p>
+<h3 id="思路">思路:</h3>
+<p><strong>这就是一道语法题目，重写sort方法即可。</strong></p>
+<h3 id="代码">代码：</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> String[] reorderLogFiles(String[] logs) &#123;</span><br><span class="line">            Arrays.sort(logs, <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;String&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(String o1, String o2)</span> &#123;</span><br><span class="line">                    <span class="type">boolean</span> <span class="variable">tag1</span> <span class="operator">=</span> Character.isDigit(o1.split(<span class="string">&quot; &quot;</span>)[<span class="number">1</span>].charAt(<span class="number">0</span>));</span><br><span class="line">                    <span class="type">boolean</span> <span class="variable">tag2</span> <span class="operator">=</span> Character.isDigit(o2.split(<span class="string">&quot; &quot;</span>)[<span class="number">1</span>].charAt(<span class="number">0</span>));</span><br><span class="line">                    <span class="keyword">if</span> (tag1&amp;&amp;!tag2)&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (!tag1&amp;&amp;tag2)&#123;</span><br><span class="line">                        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(!tag1&amp;&amp;!tag2) &#123;</span><br><span class="line">                        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> o1.indexOf(<span class="string">&quot; &quot;</span>), b = o2.indexOf(<span class="string">&quot; &quot;</span>);</span><br><span class="line">                        <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> o1.substring(a).compareTo(o2.substring(b));</span><br><span class="line">                        <span class="type">return</span> <span class="variable">t</span> <span class="operator">=</span>= <span class="number">0</span> ? o1.substring(<span class="number">0</span>, a).compareTo(o2.substring(<span class="number">0</span>, b)) : t;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> logs;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度">时间复杂度</h3>
+<p>$ O(nlogn)快速排序 $</p>
+]]></content>
+      <categories>
+        <category>算法系列</category>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode1823找出游戏的获胜者</title>
+    <url>/2022/05/04/leetcode1823%E6%89%BE%E5%87%BA%E6%B8%B8%E6%88%8F%E7%9A%84%E8%8E%B7%E8%83%9C%E8%80%85/</url>
+    <content><![CDATA[<h3 id="原题链接">原题链接</h3>
+<h4 id="找出游戏的获胜者"><a href="https://leetcode-cn.com/problems/find-the-winner-of-the-circular-game/">1823. 找出游戏的获胜者</a></h4>
+<h3 id="题目描述">题目描述</h3>
+<p>共有 n 名小伙伴一起做游戏。小伙伴们围成一圈，<strong>按 顺时针顺序 从 1 到 n 编号。</strong>确切地说，从第 i 名小伙伴顺时针移动一位会到达第 (i+1) 名小伙伴的位置，其中 1 &lt;= i &lt; n ，从第 n 名小伙伴顺时针移动一位会回到第 1 名小伙伴的位置。</p>
+<ol type="1">
+<li><p>从第 1 名小伙伴所在位置 开始 。</p></li>
+<li><p>沿着顺时针方向数 k 名小伙伴，计数时需要 包含 起始时的那位小伙伴。逐个绕圈进行计数，一些小伙伴可能会被数过不止一次。</p></li>
+<li><p>你数到的最后一名小伙伴需要离开圈子，并视作输掉游戏。</p></li>
+<li><p>如果圈子中仍然有不止一名小伙伴，从刚刚输掉的小伙伴的 顺时针下一位 小伙伴 开始，回到步骤 2 继续执行。</p></li>
+<li><p>否则，圈子中最后一名小伙伴赢得游戏。</p></li>
+</ol>
+<figure>
+<img src="/2022/05/04/leetcode1823%E6%89%BE%E5%87%BA%E6%B8%B8%E6%88%8F%E7%9A%84%E8%8E%B7%E8%83%9C%E8%80%85/ic234-q2-ex11.png" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>​ <strong>n=5，k=2时，3是获胜者</strong></p>
+<h3 id="思路">思路：</h3>
+<p><strong>模拟这个过程即可</strong></p>
+<h3 id="代码">代码：</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findTheWinner</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        Queue&lt;Integer&gt; queue =<span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;=n; i++) &#123;</span><br><span class="line">            queue.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (queue.size()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;k; i++) &#123;<span class="comment">//让队列循环起来</span></span><br><span class="line">                queue.add(queue.poll());</span><br><span class="line">            &#125;</span><br><span class="line">            queue.poll();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> queue.poll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度">时间复杂度</h3>
+<p><span class="math inline">\(O(n^2)\)</span></p>
+]]></content>
+      <categories>
+        <category>算法系列</category>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>约瑟夫环</tag>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>5月事务清单(第270号命令)</title>
+    <url>/2022/05/04/5%E6%9C%88%E4%BA%8B%E5%8A%A1%E6%B8%85%E5%8D%95/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">事件</th>
+<th style="text-align: center;">是否完成</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">数据结构总结</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">复习一轮计算机组成原理</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">背完单词一轮</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">复习完计算机网络</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">数学看完线代</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>事务清单表</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+        <tag>计划表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode.713  乘积小于K的子数组</title>
+    <url>/2022/05/05/leetcode713%E4%B9%98%E7%A7%AF%E5%B0%8F%E4%BA%8EK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h3 id="题目链接">题目链接</h3>
+<h4 id="乘积小于-k-的子数组"><a href="https://leetcode-cn.com/problems/subarray-product-less-than-k/">乘积小于 K 的子数组</a></h4>
+<h3 id="题目内容">题目内容：</h3>
+<p><img src="/2022/05/05/leetcode713%E4%B9%98%E7%A7%AF%E5%B0%8F%E4%BA%8EK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/image-20220505154008755.png"></p>
+<h3 id="思路">思路：</h3>
+<p>滑动窗口，题目出现了连续子数组，提醒了使用滑动窗口。</p>
+<p>所以维护一个<strong>滑动窗口</strong>，并维护一个<strong>总乘积</strong>，<strong>快指针不断向左</strong>不断移动，当区间总乘积大于K值时，慢指针才开始移动起来，当一个新的元素加入了滑动窗口的时候，会刚好会产生区间长度这么长的一个连续子数组。</p>
+<h3 id="代码">代码：</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">numSubarrayProductLessThanK</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">int</span> [] q = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">30010</span>];</span><br><span class="line">        <span class="type">int</span> tt=<span class="number">0</span>,dd=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span><span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span><span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            q[tt++] =nums[i];</span><br><span class="line">            sum*=nums[i]; </span><br><span class="line">            <span class="keyword">while</span>(dd&lt;tt&amp;&amp;sum&gt;=k)&#123;</span><br><span class="line">                sum/=q[dd++];</span><br><span class="line">            &#125;</span><br><span class="line">            cnt +=(tt-dd);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度">时间复杂度:</h3>
+<p><span class="math inline">\(O(n)\)</span></p>
+]]></content>
+      <categories>
+        <category>算法系列</category>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>滑动窗口</tag>
+      </tags>
+  </entry>
+</search>
