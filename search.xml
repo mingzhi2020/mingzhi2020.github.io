@@ -166,16 +166,21 @@
   <entry>
     <title>数据结构总结</title>
     <url>/2022/05/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="数据结构复习总结">数据结构复习总结</h1>
-<p>[toc]</p>
+    <content><![CDATA[<h1><span id="数据结构复习总结">数据结构复习总结</span></h1>
+<!-- toc -->
+<ul>
+<li><a href="#一-绪论">一、绪论</a></li>
+<li><a href="#二-线性表">二、线性表</a></li>
+</ul>
+<!-- tocstop -->
 <p><strong>参考书目：</strong></p>
 <ul>
 <li>《数据结构》 清华大学出版社</li>
 <li>《王道数据结构复习指导》 电子工业出版社</li>
 <li>《考研算法辅导课》 Acwing</li>
 </ul>
-<h3 id="一绪论">一、绪论</h3>
-<h4 id="数据结构的三要素">1.数据结构的三要素</h4>
+<h3><span id="一-绪论">一、绪论</span></h3>
+<h4><span id="1数据结构的三要素">1.数据结构的三要素</span></h4>
 <p>​ 数据结构包含三大要素：<code>逻辑结构</code>、<code>存储结构</code>,<code>数据的运算</code>。</p>
 <p><strong>逻辑结构：</strong>描述数据元素之间的逻辑关系，从逻辑关系上来描述数据结构，与存储结构<strong>无关</strong>，独立于计算机的。</p>
 <blockquote>
@@ -190,7 +195,7 @@
 <p>散列存储：根据元素的关键字直接计算出该元素的存储位置，又称<strong>哈希存储</strong>。检索、修改、删除的速度都很快。若散列函数不好，可能会发生存储单元的冲突，解决冲突会额外增加时间与空间的开销。</p>
 </blockquote>
 <p><strong>数据的运算：</strong>施加在数据上的运算包括运算的<strong>定义</strong>和<strong>实现</strong>。<strong>运算的定义</strong>是针对<strong>逻辑结构</strong>的，指出运算的<strong>功能</strong>。<strong>运算的实现</strong>是针对<strong>存储结构</strong>的，指出运算的<strong>实现步骤</strong>。</p>
-<h4 id="算法与算法的评价">2.算法与算法的评价</h4>
+<h4><span id="2算法与算法的评价">2.算法与算法的评价</span></h4>
 <p>​ 算法有五大特性：<strong>有穷性</strong>，<strong>确定性</strong>，<strong>可行性</strong>，<strong>输入</strong>与<strong>输出</strong>。</p>
 <p>同时算法还有三大设计要求：</p>
 <blockquote>
@@ -207,7 +212,7 @@
 <li>如果题目中找不到一模一样的选项，去证明是等价的就可以了。</li>
 <li>空间复杂度只考虑额外的辅助空间。</li>
 </ul>
-<h3 id="二线性表">二、线性表</h3>
+<h3><span id="二-线性表">二、线性表</span></h3>
 ]]></content>
       <categories>
         <category>408系列</category>
